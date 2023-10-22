@@ -11,6 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
+        // define the attributes for the table
         Schema::create('carousel_items', function (Blueprint $table) {
             $table->id('carousel_item');
             $table->string('carousel_name')->nullable();
@@ -19,6 +20,7 @@ return new class extends Migration
             $table->timestamps();
         });
 
+        // add foriegn key constraints
         Schema::table('carousel_items', function (Blueprint $table) {
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
