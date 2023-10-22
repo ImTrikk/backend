@@ -14,27 +14,30 @@ class CarouselItemsController extends Controller
      */
     public function index()
     {
-        return CarouselItems::all();    
+        return CarouselItems::all();
     }
 
-    
+
     public function show(string $id)
     {
         return CarouselItems::findOrFail($id);
     }
-    
+
     public function store(CarouselItemsRequest $request)
     {
-
         $validated = $request->validated();
         $carouselItem = CarouselItems::create($validated);
-
         return $carouselItem;
     }
-   
-    public function update(Request $request, string $id)
-    {
 
+    public function update(CarouselItemsRequest $request, string $id)
+    {
+        $validated = $request->validated();
+        $carouselItems = CarouselItems::findOrfail($id);
+        $carouselItems->update($validated);
+
+
+        return $carouselItems;
     }
 
     public function destroy(string $id)

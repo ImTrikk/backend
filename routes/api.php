@@ -22,6 +22,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 // api routes   
 Route::get('/carousel', [CarouselItemsController::class, 'index']);
-Route::get('/carousel/{id}', [CarouselItemsController::class, 'show']); 
+Route::get('/carousel/{id}', [CarouselItemsController::class, 'show']);
 Route::delete('/carousel-delete/{id}', [CarouselItemsController::class, 'destroy']);
 Route::post('/carousel-insert', [CarouselItemsController::class, 'store']);
+Route::post('/carousel-update/{id}', [CarouselItemsController::class, 'update']);
