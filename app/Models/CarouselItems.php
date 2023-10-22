@@ -11,7 +11,7 @@ class CarouselItems extends Model
 
 
     protected $table = 'carousel_items';
-    protected $primarykey = 'carousel_item_id';
+    protected $primaryKey = 'carousel_item';
     
     protected $fillable = [
         'carousel_name',
@@ -20,3 +20,4 @@ class CarouselItems extends Model
         'user_id',
     ];
 }
+ 

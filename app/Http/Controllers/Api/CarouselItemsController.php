@@ -8,7 +8,7 @@ use App\Models\CarouselItems;
 
 class CarouselItemsController extends Controller
 {
-    /**
+    /** 
      * Display a listing of the resource.
      */
     public function index()
@@ -16,22 +16,19 @@ class CarouselItemsController extends Controller
         return CarouselItems::all();
     }
 
+    
+    public function show(string $id)
+    {
+        return CarouselItems::find($id);
+    }
+    
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store()
     {
-        //
+        
     }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
     /**
      * Update the specified resource in storage.
      */
