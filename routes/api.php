@@ -4,6 +4,8 @@ use App\Http\Controllers\Api\CarouselItemsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\api\UserController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -26,3 +28,11 @@ Route::get('/carousel/{id}', [CarouselItemsController::class, 'show']);
 Route::post('/carousel-insert', [CarouselItemsController::class, 'store']);
 Route::post('/carousel-update/{id}', [CarouselItemsController::class, 'update']);
 Route::delete('/carousel-delete/{id}', [CarouselItemsController::class, 'destroy']);
+
+
+// activity
+
+Route::get('/user', [UserController::class, 'index']);
+Route::get('/user/{id}', [UserController::class, 'show']);
+Route::delete('/user/{id}', [UserController::class, 'destroy']);
+Route::post('/user', [UserController::class, 'store']);

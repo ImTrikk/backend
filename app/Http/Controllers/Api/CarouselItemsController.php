@@ -44,3 +44,4 @@ class CarouselItemsController extends Controller
         return $carouselItem;
     }
 }
+        
