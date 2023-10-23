@@ -9,9 +9,7 @@ use App\Http\Requests\CarouselItemsRequest;
 
 class CarouselItemsController extends Controller
 {
-    /** 
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
         return CarouselItems::all();
@@ -35,11 +33,10 @@ class CarouselItemsController extends Controller
         $validated = $request->validated();
         $carouselItems = CarouselItems::findOrfail($id);
         $carouselItems->update($validated);
-
-
         return $carouselItems;
     }
 
+    // delete a row in the databe
     public function destroy(string $id)
     {
         $carouselItem = CarouselItems::findOrFail($id);
