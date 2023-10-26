@@ -19,12 +19,22 @@ class UserRequest extends FormRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
+
+
+
+
     public function rules(): array
     {
-        return [
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255',
-            'password' => 'required|min:8'
-        ];
+        if (request()->routeIs("users.store")) {
+            return [
+                'name' => 'required|string|max:255',
+                'email' => 'required|string|email|unique:App\Models\User,email|max:255',
+                'password' => 'required|min:8'
+            ];
+        } else if (request()->routeIs('users.update')) {
+            return [
+                'name' => 'required|string|max:255'
+            ];
+        }
     }
 }

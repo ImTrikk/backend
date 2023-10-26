@@ -25,9 +25,9 @@ class UserController extends Controller
     {
         $validated = $request->validated();
         $validated['password'] = Hash::make($validated['password']);
-
         $user = User::create($validated);
 
+        // return the  created user
         return $user;
     }
 
@@ -39,12 +39,31 @@ class UserController extends Controller
         return User::findOrFail($id);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+
+    public function update(UserRequest $request, string $id)
     {
-        //
+        // finds the user
+        $user = User::findOrFail($id);
+
+        // vlaidate the user
+        $validated = $request->validated();
+        $user->name = $validated['name'];
+        $user->save();
+
+        // return the updated user
+        return $user;
+    }
+
+
+    public function email(UserRequest $request, string $id)
+    {
+
+    }
+
+
+    public function password(UserRequest $request, string $id)
+    {
+
     }
 
     /**
