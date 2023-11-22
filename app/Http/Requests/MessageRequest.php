@@ -23,7 +23,6 @@ class MessageRequest extends FormRequest
     {
         return [
             'message' => 'required|string|max:255',
-            'sender' => 'required|string|min:5',
             'user_id' => 'required|exists:App\Models\User,id|integer',
         ];
     }

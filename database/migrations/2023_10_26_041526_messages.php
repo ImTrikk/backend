@@ -14,7 +14,6 @@ return new class extends Migration {
         Schema::create('messages', function (Blueprint $table) {
             $table->id('message_id');
             $table->string('message')->nullable();
-            $table->string('sender');
             $table->timestamps();
 
             // Add a foreign key column

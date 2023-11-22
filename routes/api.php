@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\api\MessageController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\UserController;
@@ -47,4 +48,16 @@ Route::middleware(['auth:sanctum'])->group(function () {
     // User Specific APIS
     Route::get('/profile/show', [ProfileController::class, 'show']);
     Route::put('/profile/image', [ProfileController::class, 'image'])->name('profile.image');
+
+    Route::controller(MessageController::class)->group(function () {
+        Route::get('/message', 'index');
+        Route::get('/message/{id}', 'show');
+        Route::delete('/message/{id}', 'destroy');
+        Route::post('/message', 'store');
+        Route::put('/message/{id}', 'update');
+    });
 });
+
+// // api for message
+
+
