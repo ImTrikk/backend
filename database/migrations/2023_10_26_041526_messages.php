@@ -16,6 +16,10 @@ return new class extends Migration {
             $table->string('message')->nullable();
             $table->string('sender');
             $table->timestamps();
+
+            // Add a foreign key column
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
@@ -24,6 +28,7 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        //
+        // Drop the 'messages' table if needed
+        Schema::dropIfExists('messages');
     }
 };

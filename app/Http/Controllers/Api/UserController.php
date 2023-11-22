@@ -42,20 +42,20 @@ class UserController extends Controller
 
     public function update(UserRequest $request, string $id)
     {
-        // finds the user
-        $user = User::findOrFail($id);
+            // finds the user
+            $user = User::findOrFail($id);
 
-        // vlaidate the user
-        $validated = $request->validated();
-        $user->name = $validated['name'];
-        $user->save();
+            // vlaidate the user
+            $validated = $request->validated();
+            $user->name = $validated['name'];
+            $user->save();
 
-        // return the updated user
-        return $user;
+            // return the updated user
+            return $user;
     }
 
 
-    public function email(UserRequest $request, string $id)
+        public function email(UserRequest $request, string $id)
     {
 
     }
