@@ -28,36 +28,36 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('/logout', [AuthController::class, 'logout']);
 
     // Admin APIS
-    Route::controller(CarouselItemsController::class)->group(function () {
-        Route::get('/carousel', 'index');
-        Route::get('/carousel/{id}', 'show');
-        Route::post('/carousel', 'store');
-        Route::put('/carousel/{id}', 'update');
-        Route::delete('/carousel/{id}', 'destroy');
-    });
-    Route::controller(UserController::class)->group(function () {
-        Route::get('/user', 'index');
-        Route::get('/user/{id}', 'show');
-        Route::put('/user/{id}', 'update')->name('user.update');
-        Route::put('/user/email/{id}', 'email')->name('user.email');
-        Route::put('/user/password/{id}', 'password')->name('user.password');
-        Route::put('/user/image/{id}', 'image')->name('user.image');
-        Route::delete('/user/{id}', 'destroy');
-    });
 
-    // User Specific APIS
-    Route::get('/profile/show', [ProfileController::class, 'show']);
-    Route::put('/profile/image', [ProfileController::class, 'image'])->name('profile.image');
-
-    Route::controller(MessageController::class)->group(function () {
-        Route::get('/message', 'index');
-        Route::get('/message/{id}', 'show');
-        Route::delete('/message/{id}', 'destroy');
-        Route::post('/message', 'store');
-        Route::put('/message/{id}', 'update');
-    });
+});
+Route::controller(CarouselItemsController::class)->group(function () {
+    Route::get('/carousel', 'index');
+    Route::get('/carousel/{id}', 'show');
+    Route::post('/carousel', 'store');
+    Route::put('/carousel/{id}', 'update');
+    Route::delete('/carousel/{id}', 'destroy');
+});
+Route::controller(UserController::class)->group(function () {
+    Route::get('/user', 'index');
+    Route::get('/user/{id}', 'show');
+    Route::put('/user/{id}', 'update')->name('user.update');
+    Route::put('/user/email/{id}', 'email')->name('user.email');
+    Route::put('/user/password/{id}', 'password')->name('user.password');
+    Route::put('/user/image/{id}', 'image')->name('user.image');
+    Route::delete('/user/{id}', 'destroy');
 });
 
+// User Specific APIS
+Route::get('/profile/show', [ProfileController::class, 'show']);
+Route::put('/profile/image', [ProfileController::class, 'image'])->name('profile.image');
+
+Route::controller(MessageController::class)->group(function () {
+    Route::get('/message', 'index');
+    Route::get('/message/{id}', 'show');
+    Route::delete('/message/{id}', 'destroy');
+    Route::post('/message', 'store');
+    Route::put('/message/{id}', 'update');
+});
 // // api for message
 
 
