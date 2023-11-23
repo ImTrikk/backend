@@ -19,7 +19,7 @@ class MessageController extends Controller
 
         if ($request->keyword) {
             $messages->where(function ($query) use ($request) {
-                $query->where('users.name', 'ilike', '%' . $request->keyword . '%')
+                $query->where('users.name', 'like', '%' . $request->keyword . '%')
                     ->orWhere('messages.message', 'like', "%" . $request->keyword . '%');
             });
         }
