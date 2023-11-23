@@ -30,6 +30,8 @@ Route::middleware(['auth:sanctum'])->group(function () {
     // Admin APIS
 
 });
+
+// !transfer if done for activity
 Route::controller(CarouselItemsController::class)->group(function () {
     Route::get('/carousel', 'index');
     Route::get('/carousel/{id}', 'show');

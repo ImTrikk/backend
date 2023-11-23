@@ -14,16 +14,15 @@ class MessageController extends Controller
      */
     public function index(Request $request)
     {
-        $messages = Message::select('users.name', 'messages.message', 'messages.craeted_at', 'messages.message_id', 'message.user_id')->join('user', 'messages.user_id', '=', 'users.id');
+        $messages = Message::select('users.name', 'messages.message', 'messages.created_at', 'messages.message_id', 'messages.user_id')
+            ->join('users', 'messages.user_id', '=', 'users.id');
 
         if ($request->keyword) {
             $messages->where(function ($query) use ($request) {
-                $query->where('name', 'like', '%' . $request->keyword . '%')
-                    ->orWhere('message', 'like', '%' . $request->keyword . '%');
+                $query->where('users.name', 'ilike', '%' . $request->keyword . '%')
+                    ->orWhere('messages.message', 'like', "%" . $request->keyword . '%');
             });
         }
-        ;
-        // return Message::all();
         return $messages->get();
     }
 
