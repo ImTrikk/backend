@@ -117,4 +117,15 @@ class UserController extends Controller
 
         return $user;
     }
+
+    public function sender()
+    {
+        return User::select('sender')->get();
+    }
+    
+
+    public function selection()
+    {
+        return User::select('id', 'name')->get();
+    }
 }

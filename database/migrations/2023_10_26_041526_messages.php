@@ -15,10 +15,11 @@ return new class extends Migration {
             $table->id('message_id');
             $table->string('message')->nullable();
             $table->timestamps();
+            $table->string('sender');
 
-            // Add a foreign key column
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+            // // Add a foreign key column
+            // $table->unsignedBigInteger('user_id');
+            // $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

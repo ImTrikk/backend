@@ -22,14 +22,17 @@ use App\Http\Controllers\Api\CarouselItemsController;
 // Public APIs
 Route::post('/login', [AuthController::class, 'login'])->name('user.login');
 Route::post('/user', [UserController::class, 'store'])->name('user.store');
+// Route::get('/user/selection', [UserController::class, 'selection']);
+
 
 // Private APIs
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('/logout', [AuthController::class, 'logout']);
-
-    // Admin APIS
-
 });
+
+
+
+
 
 // !transfer if done for activity
 Route::controller(CarouselItemsController::class)->group(function () {
@@ -49,7 +52,7 @@ Route::controller(UserController::class)->group(function () {
     Route::delete('/user/{id}', 'destroy');
 });
 
-// User Specific APIS
+        // User Specific APIS
 Route::get('/profile/show', [ProfileController::class, 'show']);
 Route::put('/profile/image', [ProfileController::class, 'image'])->name('profile.image');
 
@@ -59,6 +62,7 @@ Route::controller(MessageController::class)->group(function () {
     Route::delete('/message/{id}', 'destroy');
     Route::post('/message', 'store');
     Route::put('/message/{id}', 'update');
+    // Route::post('/message/sender', 'sender');
 });
 // // api for message
 
